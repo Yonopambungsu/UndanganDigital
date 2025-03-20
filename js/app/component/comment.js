@@ -576,19 +576,19 @@ export const comment = (() => {
      }
  
      const data = {
-         "presensi": presence,
-         "nama": nameValue,
-         "jumlah": presenceCount
+         presensi: presence,
+         nama: nameValue,
+         jumlah: presenceCount
      };
  
      const apiUri = "https://script.google.com/macros/s/AKfycbwAmDNGpI_ylS5H4a1iaOdaoZ9LNvhv1KdRheInbaUG1AS6cAtPBFvrXOu0kBB_yRyZ/exec";
  var bodyJson = JSON.stringify(data);
- console.log("pake cors GET...");
+ console.log("pake cors..." + bodyJson);
  fetch(apiUri, {
-    method: 'GET',
-    // body: bodyJson,
+    method: 'POST',
+    body: bodyJson,
     headers: {
-      'Content-Type': 'text/plain;charset=utf-8',
+      "Content-Type": "application/json"
     }
   })
     .then(res => res.text())
