@@ -576,25 +576,27 @@ export const comment = (() => {
      }
  
      const data = {
-         presensi: presence,
-         nama: nameValue,
-         jumlah: presenceCount
+         "presensi": presence,
+         "nama": nameValue,
+         "jumlah": presenceCount
      };
  
-     const url = "https://script.google.com/macros/s/AKfycbzWv1LPlUZ7-f9RIc08WM6sxUq3BoeSPmxhHNonlKix2LQ9MVPfnRTEVmoT58ROGGE/exec";
+     const url = "https://script.google.com/macros/s/AKfycbwAmDNGpI_ylS5H4a1iaOdaoZ9LNvhv1KdRheInbaUG1AS6cAtPBFvrXOu0kBB_yRyZ/exec";
  var bodyJson = JSON.stringify(data);
- console.log("pake cors : ");
- fetch(url, {
-    method: "POST",
-    mode: "cors",
+ console.log("pake cors...");
+ fetch(apiUri, {
+    method: 'POST',
+    body: bodyJson,
     headers: {
-        "Content-Type": "application/json"
-    },
-    body: bodyJson
-}).then(res => res.json())
-.then(res => console.log(res))
-.catch(error => console.error("Error:", error));
-
+      'Content-Type': 'text/plain;charset=utf-8',
+    }
+  })
+    .then(res => res.text())
+    .then(response => {
+      console.log("success:", response);
+    }).catch(err => {
+      console.log("Error:" + err);
+    });
  
         // if (name) {
         //     name.disabled = false;
