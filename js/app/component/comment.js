@@ -591,10 +591,7 @@ export const comment = (() => {
         "Content-Type": "application/json"
     },
     body: data
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error("Error:", error));
+}).then(res => res.json()).then(res => console.log(res));
 
  
         if (name) {
