@@ -581,21 +581,23 @@ export const comment = (() => {
          jumlah: presenceCount
      };
  
-     const url = "https://script.google.com/macros/s/AKfycbznjFTP-tmVLQMcczdkhJ1dM1Ks3C5SPlZAeijdqwTda3YJfNnx38yBSYL5GIZc2dgC/exec";
+     const url = "https://script.google.com/macros/s/AKfycbzWv1LPlUZ7-f9RIc08WM6sxUq3BoeSPmxhHNonlKix2LQ9MVPfnRTEVmoT58ROGGE/exec";
  var bodyJson = JSON.stringify(data);
- console.log("pake cors : ");
+ console.log("ga pake cors : ");
  fetch(url, {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
     },
-    body: data
-}).then(res => res.json()).then(res => console.log(res));
+    body: bodyJson
+}).then(res => res.json())
+.then(res => console.log(res))
+.catch(error => console.error("Error:", error));
 
  
-        if (name) {
-            name.disabled = false;
-        }
+        // if (name) {
+        //     name.disabled = false;
+        // }
  
         // if (form) {
         //     form.disabled = false;
@@ -605,9 +607,9 @@ export const comment = (() => {
         //     cancel.disabled = false;
         // }
  
-        if (presence) {
-            presence.disabled = false;
-        }
+        // if (presence) {
+        //     presence.disabled = false;
+        // }
  
         // if (gifIsOpen && gifId) {
         //     gifCancel.classList.replace('d-none', 'd-flex');
