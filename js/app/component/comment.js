@@ -377,172 +377,256 @@ export const comment = (() => {
      * @param {HTMLButtonElement} button 
      * @returns {Promise<void>}
      */
+    // const send = async (button) => {
+    //     const id = button.getAttribute('data-uuid');
+
+    //     const name = document.getElementById('form-name');
+    //     let nameValue = name.value;
+
+    //     if (session.isAdmin()) {
+    //         nameValue = user.get('name');
+    //     }
+
+    //     if (nameValue.length === 0) {
+    //         alert('Name cannot be empty.');
+
+    //         if (id) {
+    //             // scroll to form.
+    //             document.getElementById('comment').scrollIntoView({ behavior: 'smooth' });
+    //         }
+    //         return;
+    //     }
+
+    //     const presence = document.getElementById('form-presence');
+    //     if (!id && presence && presence.value === '0') {
+    //         alert('Please select your attendance status.');
+    //         return;
+    //     }
+
+    //     const gifIsOpen = gif.isOpen(id ? id : 'default');
+    //     const gifId = gif.getResultId(id ? id : 'default');
+    //     const gifCancel = document.getElementById(`gif-cancel-${id ? id : 'default'}`);
+
+    //     if (gifIsOpen && !gifId) {
+    //         alert('Gif cannot be empty.');
+    //         return;
+    //     }
+
+    //     if (gifIsOpen && gifId) {
+    //         gifCancel.classList.replace('d-flex', 'd-none');
+    //     }
+
+    //     const form = document.getElementById(`form-${id ? `inner-${id}` : 'comment'}`);
+    //     if (!gifIsOpen && form.value.length === 0) {
+    //         alert('Comments cannot be empty.');
+    //         return;
+    //     }
+
+    //     if (!id && name && !session.isAdmin()) {
+    //         name.disabled = true;
+    //     }
+
+    //     if (!session.isAdmin() && presence && presence.value !== '0') {
+    //         presence.disabled = true;
+    //     }
+
+    //     if (form) {
+    //         form.disabled = true;
+    //     }
+
+    //     const cancel = document.querySelector(`[onclick="undangan.comment.cancel('${id}')"]`);
+    //     if (cancel) {
+    //         cancel.disabled = true;
+    //     }
+
+    //     const btn = util.disableButton(button);
+    //     const isPresence = presence ? presence.value === '1' : true;
+
+    //     if (!session.isAdmin()) {
+    //         const info = storage('information');
+    //         info.set('name', nameValue);
+
+    //         if (!id) {
+    //             info.set('presence', isPresence);
+    //         }
+    //     }
+
+    //     const response = await request(HTTP_POST, '/api/comment')
+    //         .token(session.getToken())
+    //         .body(dto.postCommentRequest(id, nameValue, isPresence, gif.isOpen(id) ? null : form.value, gifId))
+    //         .send(dto.getCommentResponse)
+    //         .then((res) => res, () => null);
+
+    //     if (name) {
+    //         name.disabled = false;
+    //     }
+
+    //     if (form) {
+    //         form.disabled = false;
+    //     }
+
+    //     if (cancel) {
+    //         cancel.disabled = false;
+    //     }
+
+    //     if (presence) {
+    //         presence.disabled = false;
+    //     }
+
+    //     if (gifIsOpen && gifId) {
+    //         gifCancel.classList.replace('d-none', 'd-flex');
+    //     }
+
+    //     btn.restore();
+
+    //     if (!response || response.code !== HTTP_STATUS_CREATED) {
+    //         return;
+    //     }
+
+    //     owns.set(response.data.uuid, response.data.own);
+
+    //     if (form) {
+    //         form.value = null;
+    //     }
+
+    //     if (gifIsOpen && gifId) {
+    //         gifCancel.dispatchEvent(new Event('click'));
+    //     }
+
+    //     if (!id) {
+    //         const comments = document.getElementById('comments');
+
+    //         if (pagination.reset()) {
+    //             await show();
+    //             comments.scrollIntoView({ behavior: 'smooth' });
+    //             return;
+    //         }
+
+    //         pagination.setResultData(comments.children.length);
+    //         if (pagination.getResultData() === pagination.getPer()) {
+    //             comments.lastElementChild.remove();
+    //         }
+
+    //         response.data.is_admin = session.isAdmin();
+    //         const newComment = await card.renderContent(response.data);
+
+    //         comments.insertAdjacentHTML('afterbegin', newComment);
+    //         comments.scrollIntoView({ behavior: 'smooth' });
+    //     }
+
+    //     if (id) {
+    //         showHide.set('hidden', showHide.get('hidden').concat([dto.commentShowMore(response.data.uuid, true)]));
+    //         showHide.set('show', showHide.get('show').concat([id]));
+
+    //         changeButton(id, false);
+    //         document.getElementById(`inner-${id}`).remove();
+
+    //         response.data.is_admin = session.isAdmin();
+    //         document.getElementById(`reply-content-${id}`).insertAdjacentHTML('beforeend', await card.renderInnerContent(response.data));
+
+    //         const containerDiv = document.getElementById(`button-${id}`);
+    //         const anchorTag = containerDiv.querySelector('a');
+    //         const uuids = [response.data.uuid];
+
+    //         if (anchorTag) {
+    //             if (anchorTag.getAttribute('data-show') === 'false') {
+    //                 showOrHide(anchorTag);
+    //             }
+
+    //             anchorTag.remove();
+    //         }
+
+    //         const query = `button[onclick="undangan.comment.like.love(this)"][data-uuid="${id}"]`;
+    //         containerDiv.querySelector(query).insertAdjacentHTML('beforebegin', card.renderReadMore(id, anchorTag ? anchorTag.getAttribute('data-uuids').split(',').concat(uuids) : uuids));
+    //     }
+
+    //     addListenerLike(response.data);
+    // };
     const send = async (button) => {
         const id = button.getAttribute('data-uuid');
-
+ 
         const name = document.getElementById('form-name');
         let nameValue = name.value;
-
+ 
         if (session.isAdmin()) {
             nameValue = user.get('name');
         }
-
+ 
         if (nameValue.length === 0) {
             alert('Name cannot be empty.');
-
+ 
             if (id) {
                 // scroll to form.
                 document.getElementById('comment').scrollIntoView({ behavior: 'smooth' });
             }
             return;
         }
-
+ 
         const presence = document.getElementById('form-presence');
-        if (!id && presence && presence.value === '0') {
-            alert('Please select your attendance status.');
+        if (!id && presence && presence.value === 'X') {
+            alert('Mohon konfirmasi kehadiran.');
             return;
         }
-
-        const gifIsOpen = gif.isOpen(id ? id : 'default');
-        const gifId = gif.getResultId(id ? id : 'default');
-        const gifCancel = document.getElementById(`gif-cancel-${id ? id : 'default'}`);
-
-        if (gifIsOpen && !gifId) {
-            alert('Gif cannot be empty.');
-            return;
-        }
-
-        if (gifIsOpen && gifId) {
-            gifCancel.classList.replace('d-flex', 'd-none');
-        }
-
-        const form = document.getElementById(`form-${id ? `inner-${id}` : 'comment'}`);
-        if (!gifIsOpen && form.value.length === 0) {
-            alert('Comments cannot be empty.');
-            return;
-        }
-
-        if (!id && name && !session.isAdmin()) {
-            name.disabled = true;
-        }
-
-        if (!session.isAdmin() && presence && presence.value !== '0') {
-            presence.disabled = true;
-        }
-
-        if (form) {
-            form.disabled = true;
-        }
-
-        const cancel = document.querySelector(`[onclick="undangan.comment.cancel('${id}')"]`);
-        if (cancel) {
-            cancel.disabled = true;
-        }
-
-        const btn = util.disableButton(button);
-        const isPresence = presence ? presence.value === '1' : true;
-
-        if (!session.isAdmin()) {
-            const info = storage('information');
-            info.set('name', nameValue);
-
-            if (!id) {
-                info.set('presence', isPresence);
-            }
-        }
-
-        const response = await request(HTTP_POST, '/api/comment')
-            .token(session.getToken())
-            .body(dto.postCommentRequest(id, nameValue, isPresence, gif.isOpen(id) ? null : form.value, gifId))
-            .send(dto.getCommentResponse)
-            .then((res) => res, () => null);
-
+ 
+   
+     const presenceCount = document.getElementById('form-count');
+     if (!id && presenceCount && presenceCount.value === '0') {
+         alert('Silahkan isi kuota kehadiran.');
+         return;
+     }
+ 
+     const data = {
+         presensi: presence,
+         nama: nameValue,
+         jumlah: presenceCount
+     };
+ 
+     const url = "https://script.google.com/macros/s/AKfycbwVqOHFjQy2q--Gnn-WoBeEdiznfI6o5U2RErKhcHaokNR5t688Ce-kWYUT6jQnmS6l/exec";
+ 
+     try {
+         const response = await fetch(url, {
+             method: "POST",
+             headers: {
+                 "Content-Type": "application/json"
+             },
+             body: JSON.stringify(data)
+         });
+ 
+         const result = await response.json();
+         console.log("Response:", result);
+         return result;
+     } catch (error) {
+         console.error("Error:", error);
+         return null;
+     }
+ 
         if (name) {
             name.disabled = false;
         }
-
+ 
         if (form) {
             form.disabled = false;
         }
-
+ 
         if (cancel) {
             cancel.disabled = false;
         }
-
+ 
         if (presence) {
             presence.disabled = false;
         }
-
+ 
         if (gifIsOpen && gifId) {
             gifCancel.classList.replace('d-none', 'd-flex');
         }
-
+ 
         btn.restore();
-
-        if (!response || response.code !== HTTP_STATUS_CREATED) {
+ 
+     if (!response || response.status !== "success") {
             return;
         }
-
-        owns.set(response.data.uuid, response.data.own);
-
-        if (form) {
-            form.value = null;
-        }
-
-        if (gifIsOpen && gifId) {
-            gifCancel.dispatchEvent(new Event('click'));
-        }
-
-        if (!id) {
-            const comments = document.getElementById('comments');
-
-            if (pagination.reset()) {
-                await show();
-                comments.scrollIntoView({ behavior: 'smooth' });
-                return;
-            }
-
-            pagination.setResultData(comments.children.length);
-            if (pagination.getResultData() === pagination.getPer()) {
-                comments.lastElementChild.remove();
-            }
-
-            response.data.is_admin = session.isAdmin();
-            const newComment = await card.renderContent(response.data);
-
-            comments.insertAdjacentHTML('afterbegin', newComment);
-            comments.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        if (id) {
-            showHide.set('hidden', showHide.get('hidden').concat([dto.commentShowMore(response.data.uuid, true)]));
-            showHide.set('show', showHide.get('show').concat([id]));
-
-            changeButton(id, false);
-            document.getElementById(`inner-${id}`).remove();
-
-            response.data.is_admin = session.isAdmin();
-            document.getElementById(`reply-content-${id}`).insertAdjacentHTML('beforeend', await card.renderInnerContent(response.data));
-
-            const containerDiv = document.getElementById(`button-${id}`);
-            const anchorTag = containerDiv.querySelector('a');
-            const uuids = [response.data.uuid];
-
-            if (anchorTag) {
-                if (anchorTag.getAttribute('data-show') === 'false') {
-                    showOrHide(anchorTag);
-                }
-
-                anchorTag.remove();
-            }
-
-            const query = `button[onclick="undangan.comment.like.love(this)"][data-uuid="${id}"]`;
-            containerDiv.querySelector(query).insertAdjacentHTML('beforebegin', card.renderReadMore(id, anchorTag ? anchorTag.getAttribute('data-uuids').split(',').concat(uuids) : uuids));
-        }
-
-        addListenerLike(response.data);
+ 
     };
-
     /**
      * @param {string} id
      * @returns {void}
