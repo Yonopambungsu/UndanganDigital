@@ -586,6 +586,7 @@ export const comment = (() => {
 //  console.log("bodyJson : " + bodyJson);
  fetch(url, {
     method: "POST",
+    mode: "no-cors",
     headers: {
         "Content-Type": "application/json"
     },
