@@ -583,7 +583,7 @@ export const comment = (() => {
  
      const url = "https://script.google.com/macros/s/AKfycbznjFTP-tmVLQMcczdkhJ1dM1Ks3C5SPlZAeijdqwTda3YJfNnx38yBSYL5GIZc2dgC/exec";
  var bodyJson = JSON.stringify(data);
-//  console.log("bodyJson : " + bodyJson);
+ console.log("bodyJson : " + bodyJson);
  fetch(url, {
     method: "POST",
     mode: "no-cors",
@@ -601,9 +601,9 @@ export const comment = (() => {
             name.disabled = false;
         }
  
-        if (form) {
-            form.disabled = false;
-        }
+        // if (form) {
+        //     form.disabled = false;
+        // }
  
         // if (cancel) {
         //     cancel.disabled = false;
