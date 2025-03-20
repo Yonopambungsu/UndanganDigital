@@ -582,7 +582,8 @@ export const comment = (() => {
      };
  
      const url = "https://script.google.com/macros/s/AKfycbwVqOHFjQy2q--Gnn-WoBeEdiznfI6o5U2RErKhcHaokNR5t688Ce-kWYUT6jQnmS6l/exec";
- 
+ var bodyJson = JSON.stringify(data);
+ console.log("bodyJson : " + bodyJson);
      try {
          const response = await fetch(url, {
              method: "POST",
