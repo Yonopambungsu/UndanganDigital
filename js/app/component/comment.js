@@ -581,7 +581,7 @@ export const comment = (() => {
          "jumlah": presenceCount
      };
  
-     const url = "https://script.google.com/macros/s/AKfycbwAmDNGpI_ylS5H4a1iaOdaoZ9LNvhv1KdRheInbaUG1AS6cAtPBFvrXOu0kBB_yRyZ/exec";
+     const apiUri = "https://script.google.com/macros/s/AKfycbwAmDNGpI_ylS5H4a1iaOdaoZ9LNvhv1KdRheInbaUG1AS6cAtPBFvrXOu0kBB_yRyZ/exec";
  var bodyJson = JSON.stringify(data);
  console.log("pake cors...");
  fetch(apiUri, {
