@@ -583,9 +583,10 @@ export const comment = (() => {
  
      const url = "https://script.google.com/macros/s/AKfycbzWv1LPlUZ7-f9RIc08WM6sxUq3BoeSPmxhHNonlKix2LQ9MVPfnRTEVmoT58ROGGE/exec";
  var bodyJson = JSON.stringify(data);
- console.log("ga pake cors : ");
+ console.log("pake cors : ");
  fetch(url, {
     method: "POST",
+    mode: "cors",
     headers: {
         "Content-Type": "application/json"
     },
