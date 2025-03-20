@@ -609,19 +609,19 @@ export const comment = (() => {
             form.disabled = false;
         }
  
-        if (cancel) {
-            cancel.disabled = false;
-        }
+        // if (cancel) {
+        //     cancel.disabled = false;
+        // }
  
         if (presence) {
             presence.disabled = false;
         }
  
-        if (gifIsOpen && gifId) {
-            gifCancel.classList.replace('d-none', 'd-flex');
-        }
+        // if (gifIsOpen && gifId) {
+        //     gifCancel.classList.replace('d-none', 'd-flex');
+        // }
  
-        btn.restore();
+        // btn.restore();
  
      if (!response || response.status !== "success") {
             return;
