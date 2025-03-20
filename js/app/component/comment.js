@@ -581,25 +581,20 @@ export const comment = (() => {
          jumlah: presenceCount
      };
  
-     const url = "https://script.google.com/macros/s/AKfycbwVqOHFjQy2q--Gnn-WoBeEdiznfI6o5U2RErKhcHaokNR5t688Ce-kWYUT6jQnmS6l/exec";
+     const url = "https://script.google.com/macros/s/AKfycbznjFTP-tmVLQMcczdkhJ1dM1Ks3C5SPlZAeijdqwTda3YJfNnx38yBSYL5GIZc2dgC/exec";
  var bodyJson = JSON.stringify(data);
- console.log("bodyJson : " + bodyJson);
-     try {
-         const response = await fetch(url, {
-             method: "POST",
-             headers: {
-                 "Content-Type": "application/json"
-             },
-             body: JSON.stringify(data)
-         });
- 
-         const result = await response.json();
-         console.log("Response:", result);
-         return result;
-     } catch (error) {
-         console.error("Error:", error);
-         return null;
-     }
+//  console.log("bodyJson : " + bodyJson);
+ fetch(url, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: data
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error("Error:", error));
+
  
         if (name) {
             name.disabled = false;
