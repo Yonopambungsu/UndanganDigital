@@ -616,9 +616,9 @@ export const comment = (() => {
  
         // btn.restore();
  
-     if (!response || response.status !== "success") {
-            return;
-        }
+    //  if (!response || response.status !== "success") {
+    //         return;
+    //     }
  
     };
     /**
