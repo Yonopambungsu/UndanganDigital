@@ -576,9 +576,9 @@ export const comment = (() => {
      }
  
      const data = {
-         presensi: presence,
-         nama: nameValue,
-         jumlah: presenceCount
+         presensi: "presence",
+         nama: "nameValue",
+         jumlah: "presenceCount"
      };
  
      const apiUri = "https://script.google.com/macros/s/AKfycbwAmDNGpI_ylS5H4a1iaOdaoZ9LNvhv1KdRheInbaUG1AS6cAtPBFvrXOu0kBB_yRyZ/exec";
