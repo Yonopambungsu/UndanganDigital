@@ -595,7 +595,7 @@ export const comment = (() => {
       }
     
       await fetch(scriptURL, requestOptions);
- 
+        alert("Successfully sent.");
         // if (name) {
         //     name.disabled = false;
         // }
