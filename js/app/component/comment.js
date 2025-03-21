@@ -575,7 +575,7 @@ export const comment = (() => {
          return;
      }
  
-     const scriptURL = "https://script.google.com/macros/s/AKfycby-UG87OwW7MuM7b7W9uRpGPa6RuDXKdIAybhIkSL7ALVC0pDqzgw8NGbhGE7KrB_G-/exec";
+     const scriptURL = "https://script.google.com/macros/s/AKfycbxTlCaQYuvI6xJSU4FlJuCqaWBgo3kQdYQRgWPGnbfvHhjcMSLphcLi20JSgMX-vZMu/exec";
      const data = {
         presensi: "Hadir",
         nama: "John Doe",
