@@ -577,16 +577,15 @@ export const comment = (() => {
  
      const scriptURL = "https://script.google.com/macros/s/AKfycbxTlCaQYuvI6xJSU4FlJuCqaWBgo3kQdYQRgWPGnbfvHhjcMSLphcLi20JSgMX-vZMu/exec";
      const data = {
-        presensi: "Hadir",
-        nama: "John Doe",
-        jumlah: 1
+        presensi: presence,
+        nama: nameValue,
+        jumlah: presenceCount
       };
       const body = JSON.stringify(data);
-      console.log("no-cors");
+      console.log("cors.");
       // Kirim data dengan fetch
       const requestOptions = {
         method: "POST",
-        mode: "no-cors",
         headers: {
           "Content-Type": "application/json",
           "Content-Length": body.length,
