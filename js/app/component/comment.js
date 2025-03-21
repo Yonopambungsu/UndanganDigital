@@ -575,28 +575,57 @@ export const comment = (() => {
          return;
      }
  
-     const scriptURL = "https://script.google.com/macros/s/AKfycbwsqZxUxd2fm1PqdMDY0Up159d4EDiqg6bUvMQyVmvGghXuxG_34vSW0_xk-e2rRbG1/exec";
+     const scriptURL = "https://script.google.com/macros/s/AKfycby-UG87OwW7MuM7b7W9uRpGPa6RuDXKdIAybhIkSL7ALVC0pDqzgw8NGbhGE7KrB_G-/exec";
      const data = {
         presensi: "Hadir",
         nama: "John Doe",
         jumlah: 1
       };
-      console.log("John Doe");
+      console.log("no-cache");
       // Kirim data dengan fetch
-      fetch(scriptURL, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
+      try {
+        // Kirim data ke Apps Script
+        const response = await fetch(scriptURL, {
+          method: 'POST',
+          mode: 'cors',
+          cache: 'no-cache',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          redirect: 'follow',
+          body: JSON.stringify(data)
+        });
+        
+        // Cek apakah response OK
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Success:', data);
-      })
-      .catch(error => {
+        
+        // Parse response JSON
+        const result = await response.json();
+        
+        if (result.success) {
+          // Tampilkan pesan sukses
+        //   successMessage.style.display = 'block';
+        alert("Successfully send.");
+          // Reset form
+        //   document.getElementById('dataForm').reset();
+        } else {
+          // Tampilkan error dari server
+        //   errorMessage.textContent = result.error || 'Terjadi kesalahan saat menyimpan data.';
+        //   errorMessage.style.display = 'block';
+        alert(result.error);
+        }
+      } catch (error) {
         console.error('Error:', error);
-      });
+        // Tampilkan pesan error
+        // errorMessage.textContent = `Error: ${error.message}`;
+        // errorMessage.style.display = 'block';
+      } finally {
+        // Reset UI
+        // submitBtn.disabled = false;
+        // loadingIndicator.style.display = 'none';
+      }
  
         // if (name) {
         //     name.disabled = false;
