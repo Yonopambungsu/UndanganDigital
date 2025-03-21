@@ -575,28 +575,28 @@ export const comment = (() => {
          return;
      }
  
+     const scriptURL = "https://script.google.com/macros/s/AKfycbwsqZxUxd2fm1PqdMDY0Up159d4EDiqg6bUvMQyVmvGghXuxG_34vSW0_xk-e2rRbG1/exec";
      const data = {
-         presensi: "presence",
-         nama: "nameValue",
-         jumlah: "presenceCount"
-     };
- 
-     const apiUri = "https://script.google.com/macros/s/AKfycbwAmDNGpI_ylS5H4a1iaOdaoZ9LNvhv1KdRheInbaUG1AS6cAtPBFvrXOu0kBB_yRyZ/exec";
- var bodyJson = JSON.stringify(data);
- console.log("pake cors..." + bodyJson);
- fetch(apiUri, {
-    method: 'POST',
-    body: bodyJson,
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-    .then(res => res.text())
-    .then(response => {
-      console.log("success:", response);
-    }).catch(err => {
-      console.log("Error:" + err);
-    });
+        presensi: "Hadir",
+        nama: "John Doe",
+        jumlah: 1
+      };
+      console.log("John Doe");
+      // Kirim data dengan fetch
+      fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
  
         // if (name) {
         //     name.disabled = false;
