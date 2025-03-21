@@ -581,51 +581,21 @@ export const comment = (() => {
         nama: "John Doe",
         jumlah: 1
       };
-      console.log("no-cache");
+      const body = JSON.stringify(data);
+      console.log("no-cors");
       // Kirim data dengan fetch
-      try {
-        // Kirim data ke Apps Script
-        const response = await fetch(scriptURL, {
-          method: 'POST',
-          mode: 'cors',
-          cache: 'no-cache',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          redirect: 'follow',
-          body: JSON.stringify(data)
-        });
-        
-        // Cek apakah response OK
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        
-        // Parse response JSON
-        const result = await response.json();
-        
-        if (result.success) {
-          // Tampilkan pesan sukses
-        //   successMessage.style.display = 'block';
-        alert("Successfully send.");
-          // Reset form
-        //   document.getElementById('dataForm').reset();
-        } else {
-          // Tampilkan error dari server
-        //   errorMessage.textContent = result.error || 'Terjadi kesalahan saat menyimpan data.';
-        //   errorMessage.style.display = 'block';
-        alert(result.error);
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        // Tampilkan pesan error
-        // errorMessage.textContent = `Error: ${error.message}`;
-        // errorMessage.style.display = 'block';
-      } finally {
-        // Reset UI
-        // submitBtn.disabled = false;
-        // loadingIndicator.style.display = 'none';
+      const requestOptions = {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+          "Content-Length": body.length,
+          "Host": "script.google.com",
+        },
+        body: body
       }
+    
+      await fetch(scriptURL, requestOptions);
  
         // if (name) {
         //     name.disabled = false;
