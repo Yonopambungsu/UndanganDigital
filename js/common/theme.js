@@ -3,8 +3,8 @@ import { storage } from './storage.js';
 export const theme = (() => {
 
     const themeColors = {
-        '#000000': '#DB91A0',
-        '#DB91A0': '#000000',
+        '#000000': '#ffffff',
+        '#ffffff': '#000000',
         '#212529': '#f8f9fa',
         '#f8f9fa': '#212529'
     };
