@@ -5,10 +5,10 @@ export const theme = (() => {
     const themeColors = {
         '#000000': '#ffffff',
         '#ffffff': '#000000',
-        '#212529': '#f8f9fa',
-        '#f8f9fa': '#212529'
+        '#212529': '#DB91A0',
+        '#DB91A0': '#212529'
     };
-    const themeLight = ['#ffffff', '#f8f9fa'];
+    const themeLight = ['#ffffff', '#DB91A0'];
     const themeDark = ['#000000', '#212529'];
 
     let isAuto = false;
