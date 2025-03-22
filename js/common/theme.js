@@ -3,12 +3,12 @@ import { storage } from './storage.js';
 export const theme = (() => {
 
     const themeColors = {
-        '#000000': '#ffffff',
-        '#ffffff': '#000000',
-        '#212529': '#f8f9fa',
-        '#f8f9fa': '#212529'
+        '#000000': '#F4C2C2',
+        '#F4C2C2': '#000000',
+        '#212529': '#D58494',
+        '#D58494': '#212529'
     };
-    const themeLight = ['#ffffff', '#f8f9fa'];
+    const themeLight = ['#F4C2C2', '#D58494'];
     const themeDark = ['#000000', '#212529'];
 
     let isAuto = false;
