@@ -166,7 +166,7 @@ export const guest = (() => {
         const url = new URL('https://calendar.google.com/calendar/render');
         const data = {
             action: 'TEMPLATE',
-            text: 'The Wedding of Yono and Rizka',
+            text: 'The Wedding of Nama Cowo and Nama Cewe',
             dates: `${formatDate('2025-04-18 13:00')}/${formatDate('2025-04-18 18:00')}`,
             details: 'Tanpa mengurangi rasa hormat, kami mengundang Anda untuk berkenan menghadiri acara pernikahan kami. Terima kasih atas perhatian dan doa restu Anda, yang menjadi kebahagiaan serta kehormatan besar bagi kami.',
             location: 'https://maps.app.goo.gl/jmz7Szb1H8TMd2oZ9',
